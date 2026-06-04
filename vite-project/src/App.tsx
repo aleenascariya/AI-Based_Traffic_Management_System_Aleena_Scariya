@@ -8,7 +8,11 @@ export default function App() {
 
 		<main>
 		<div>
-		Sidebar
+		<h3>Control Paradigm</h3>
+
+		<button>
+		Adaptive AI
+		</button>
 		</div>
 
 		<div>
