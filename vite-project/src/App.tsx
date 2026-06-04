@@ -1,3 +1,4 @@
+import { JunctionSimulator } from "./components/JunctionSimulator";
 export default function App() {
 	return (
 		<div>
@@ -17,7 +18,6 @@ export default function App() {
 		<button>
 		Fixed Clock
 		</button>
-		</div>
 
 		<div>
 		<p>Paused</p>
@@ -26,9 +26,10 @@ export default function App() {
 		Play
 		</button>
 		</div>
+		</div>
 
 		<div>
-		Dashboard
+		<JunctionSimulator />
 		</div>
 		</main>
 		</div>
