@@ -7,7 +7,13 @@ export default function App() {
 		</header>
 
 		<main>
+		<div>
+		Sidebar
+		</div>
+
+		<div>
 		Dashboard
+		</div>
 		</main>
 		</div>
 	);
