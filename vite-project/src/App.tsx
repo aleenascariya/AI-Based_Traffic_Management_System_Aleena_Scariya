@@ -1,8 +1,10 @@
 import { JunctionSimulator } from "./components/JunctionSimulator";
 import { useTrafficEngine } from "./hooks/useTrafficEngine";
+
 export default function App() {
 	const engine = useTrafficEngine();
 	const laneCounts = engine.getLaneCounts();
+
 	return (
 		<div>
 		<header>
@@ -31,20 +33,22 @@ export default function App() {
 		{engine.isPlaying
 			? "Active Processing"
 			: "Paused"}
-			</p>
+		</p>
+
 		<button 
 		onClick={() =>
 			engine.setIsPlaying(!engine.isPlaying)
 		}
-	>
-	{engine.isPlaying ? "Pause" : "Play"}
-	</button>
+		>
+		{engine.isPlaying ? "Pause" : "Play"}
+		</button>
 
 		</div>
 		</aside>
 
 		<section>
 		<JunctionSimulator />
+		
 		<div>
 		<h3>Live Density</h3>
 
@@ -57,16 +61,16 @@ export default function App() {
 		</div>
 
 		<div>
-            <h3>Activity Stream</h3>
+		<h3>Activity Stream</h3>
 
-            <p>No activity available</p>
-          </div>
+		<p>No activity available</p>
+		</div>
 
-	  <div>
-            <h3>Data Registry</h3>
+		<div>
+		<h3>Data Registry</h3>
 
-            <p>No records saved</p>
-          </div>
+		<p>No records saved</p>
+		</div>
 		</section>
 		</main>
 		</div>
