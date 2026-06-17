@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { ControlMode } from "../types";
+import {
+  ControlMode,
+  Vehicle,
+} from "../types";
 
 export function useTrafficEngine() {
   const [controlMode, setControlMode] =
@@ -7,6 +10,9 @@ export function useTrafficEngine() {
 
   const [isPlaying, setIsPlaying] =
     useState(false);
+
+  const [allVehicles, setAllVehicles] =
+  useState<Vehicle[]>([]);
   
   const getLaneCounts = () => ({
   North: 0,
@@ -21,5 +27,7 @@ export function useTrafficEngine() {
     isPlaying,
     setIsPlaying,
     getLaneCounts,
+    allVehicles,
+    setAllVehicles,
   };
 }
