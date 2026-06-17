@@ -8,7 +8,7 @@ export default function App() {
 		</header>
 
 		<main>
-		<div>
+		<aside>
 		<h3>Control Paradigm</h3>
 
 		<button>
@@ -26,11 +26,11 @@ export default function App() {
 		Play
 		</button>
 		</div>
-		</div>
+		</aside>
 
-		<div>
+		<section>
 		<JunctionSimulator />
-		</div>
+		</section>
 		</main>
 		</div>
 	);
