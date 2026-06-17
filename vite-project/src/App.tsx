@@ -43,6 +43,42 @@ export default function App() {
 		{engine.isPlaying ? "Pause" : "Play"}
 		</button>
 
+		<div>
+		<h3>Vehicle Injection</h3>
+
+		<button
+		onClick={() =>
+			engine.handleInjectVehicle("North")
+		}
+		>
+		Add North Vehicle
+		</button>
+
+		<button
+		onClick={() =>
+			engine.handleInjectVehicle("East")
+		}
+		>
+		Add East Vehicle
+		</button>
+
+		<button
+		onClick={() =>
+			engine.handleInjectVehicle("South")
+		}
+		>
+		Add South Vehicle
+		</button>
+
+		<button
+		onClick={() =>
+			engine.handleInjectVehicle("West")
+		}
+		>
+		Add West Vehicle
+		</button>
+		</div>
+
 		</div>
 		</aside>
 
