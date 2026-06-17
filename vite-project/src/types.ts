@@ -7,3 +7,8 @@ export type LaneDirection =
 export type ControlMode =
   | "adaptive"
   | "fixed";
+
+export interface Vehicle {
+  id: number;
+  lane: LaneDirection;
+}
