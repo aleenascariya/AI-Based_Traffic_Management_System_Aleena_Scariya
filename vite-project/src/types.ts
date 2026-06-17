@@ -12,3 +12,8 @@ export interface Vehicle {
   id: number;
   lane: LaneDirection;
 }
+
+export interface TrafficSignal {
+  lane: LaneDirection;
+  color: "red" | "green";
+}
