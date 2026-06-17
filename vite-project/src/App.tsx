@@ -157,7 +157,14 @@ export default function App() {
 		<div>
 		<h3>Data Registry</h3>
 
-		<p>No records saved</p>
+		<button
+		onClick={engine.saveTrafficMetrics}
+		>
+		Save
+		</button>
+		<p>
+		Records: {engine.savedRecords.length}
+		</p>
 		</div>
 		</section>
 		</main>
