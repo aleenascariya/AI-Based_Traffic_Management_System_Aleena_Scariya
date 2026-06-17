@@ -30,6 +30,13 @@ export function useTrafficEngine() {
     newVehicle,
   ]);
 };
+
+  const handleOverrideLane = (
+	  lane: LaneDirection
+  ) => {
+	  setActiveGreenLane(lane);
+  };
+
   const getLaneCounts = () => ({
   North: allVehicles.filter(
     (vehicle) => vehicle.lane === "North"
@@ -59,5 +66,6 @@ export function useTrafficEngine() {
     handleInjectVehicle,
     activeGreenLane,
     setActiveGreenLane,
+    handleOverrideLane,
   };
 }
