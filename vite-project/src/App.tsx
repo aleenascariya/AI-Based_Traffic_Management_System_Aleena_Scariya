@@ -2,6 +2,7 @@ import { JunctionSimulator } from "./components/JunctionSimulator";
 import { useTrafficEngine } from "./hooks/useTrafficEngine";
 export default function App() {
 	const engine = useTrafficEngine();
+	const laneCounts = engine.getLaneCounts();
 	return (
 		<div>
 		<header>
@@ -48,10 +49,10 @@ export default function App() {
 		<h3>Live Density</h3>
 
 		<ul>
-		<li>North: LOW</li>
-		<li>East: LOW</li>
-		<li>South: LOW</li>
-		<li>West: LOW</li>
+		<li>North: {laneCounts.North}</li>
+		<li>East: {laneCounts.East}</li>
+		<li>South: {laneCounts.South}</li>
+		<li>West: {laneCounts.West}</li>
 		</ul>
 		</div>
 
