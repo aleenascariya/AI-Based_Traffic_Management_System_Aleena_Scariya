@@ -14,6 +14,19 @@ export function useTrafficEngine() {
   const [allVehicles, setAllVehicles] =
   useState<Vehicle[]>([]);
   
+  const handleInjectVehicle = (
+	  lane: Vehicle["lane"]
+  ) => {
+  const newVehicle: Vehicle = {
+	  id: Date.now(),
+	  lane,
+  };
+  setAllVehicles((prev) => [
+    ...prev,
+    newVehicle,
+  ]);
+};
+
   const getLaneCounts = () => ({
   North: 0,
   East: 0,
@@ -29,5 +42,6 @@ export function useTrafficEngine() {
     getLaneCounts,
     allVehicles,
     setAllVehicles,
+    handleInjectVehicle,
   };
 }
