@@ -21,6 +21,19 @@ export function useTrafficEngine() {
 
   const [logs, setLogs] =
   useState<ActivityLog[]>([]);
+
+  const addLog = (message: string) => {
+  const newLog: ActivityLog = {
+    id: Date.now(),
+    time: new Date().toLocaleTimeString(),
+    message,
+  };
+
+  setLogs((prev) => [
+    newLog,
+    ...prev,
+  ]);
+};
   
   const handleInjectVehicle = (
 	  lane: Vehicle["lane"]
@@ -72,5 +85,6 @@ export function useTrafficEngine() {
     setActiveGreenLane,
     handleOverrideLane,
     logs,
+    addLog,
   };
 }
