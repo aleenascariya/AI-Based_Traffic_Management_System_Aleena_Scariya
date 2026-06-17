@@ -2,6 +2,7 @@ import { useState } from "react";
 import {
   ControlMode,
   Vehicle,
+  LaneDirection,
 } from "../types";
 
 export function useTrafficEngine() {
@@ -13,6 +14,9 @@ export function useTrafficEngine() {
 
   const [allVehicles, setAllVehicles] =
   useState<Vehicle[]>([]);
+
+  const [activeGreenLane, setActiveGreenLane] =
+  useState<LaneDirection>("North");
   
   const handleInjectVehicle = (
 	  lane: Vehicle["lane"]
@@ -26,7 +30,6 @@ export function useTrafficEngine() {
     newVehicle,
   ]);
 };
-
   const getLaneCounts = () => ({
   North: allVehicles.filter(
     (vehicle) => vehicle.lane === "North"
@@ -54,5 +57,7 @@ export function useTrafficEngine() {
     allVehicles,
     setAllVehicles,
     handleInjectVehicle,
+    activeGreenLane,
+    setActiveGreenLane,
   };
 }
