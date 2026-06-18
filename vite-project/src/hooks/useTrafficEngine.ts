@@ -100,6 +100,14 @@ export function useTrafficEngine() {
   return highestLane;
 };
 
+  const runAdaptiveControl = () => {
+  const nextLane = getHighestDensityLane();
+
+  setActiveGreenLane(nextLane);
+
+  addLog(`Adaptive mode selected ${nextLane}`);
+};
+
   const saveTrafficMetrics = () => {
   const newRecord: TrafficRecord = {
     id: Date.now(),
@@ -132,5 +140,6 @@ export function useTrafficEngine() {
     savedRecords,
     saveTrafficMetrics,
     getHighestDensityLane,
+    runAdaptiveControl,
   };
 }
