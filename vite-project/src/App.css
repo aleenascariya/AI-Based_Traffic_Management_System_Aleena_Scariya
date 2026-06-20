@@ -128,7 +128,7 @@ li {
 
 @media (max-width: 768px) {
   main {
-    grid-template-columns: 1fr;
+    padding: 12px;
   }
 
   header {
