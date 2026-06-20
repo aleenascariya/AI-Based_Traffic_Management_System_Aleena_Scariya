@@ -160,6 +160,36 @@ export function useTrafficEngine() {
     setIsPlaying(false);
   };
 
+  const generateDemoTraffic = () => {
+    const lanes: LaneDirection[] = [
+       "North",
+       "East",
+       "South",
+       "West",
+     ];
+
+    const vehicles: Vehicle[] = [];
+
+    for (let i = 0; i < 10; i++) {
+      vehicles.push({
+        id: Date.now() + i,
+        lane: lanes[
+          Math.floor(Math.random() * lanes.length)
+        ],
+      });
+    }
+
+    setAllVehicles(vehicles);
+
+    addLog("Demo traffic generated");
+
+    if (controlMode === "adaptive") {
+      setTimeout(() => {
+        runAdaptiveControl();
+      }, 0);
+    }
+  };
+
   const saveTrafficMetrics = () => {
     const newRecord: TrafficRecord = {
       id: Date.now(),
@@ -231,6 +261,7 @@ export function useTrafficEngine() {
     getTotalVehicles,
     clearVehicles,
     resetDashboard,
+    generateDemoTraffic,
 
   };
 }
