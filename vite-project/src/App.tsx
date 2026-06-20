@@ -135,6 +135,24 @@ export default function App() {
 		</div>
 
 		<div>
+		<h3>AI Recommendations</h3>
+
+		{engine.recommendations.length === 0 ? (
+			<p>No recommendations available</p>
+		) : (
+		<ul>
+		{engine.recommendations.map(
+			(recommendation) => (
+				<li key={recommendation.id}>
+				{recommendation.message}
+				</li>
+			)
+		)}
+		</ul>
+		)}
+		</div>
+
+		<div>
 		<h3>Active Signal</h3>
 
 		<p>{engine.activeGreenLane}</p>
