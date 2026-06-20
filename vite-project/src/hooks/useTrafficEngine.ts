@@ -147,6 +147,19 @@ export function useTrafficEngine() {
     addLog("All vehicles cleared");
   };
 
+  const resetDashboard = () => {
+    setAllVehicles([]);
+    setLogs([]);
+    setSavedRecords([]);
+    setRecommendations([]);
+    setInsights([]);
+    setCurrentPrompt("");
+
+    setActiveGreenLane("North");
+    setControlMode("adaptive");
+    setIsPlaying(false);
+  };
+
   const saveTrafficMetrics = () => {
     const newRecord: TrafficRecord = {
       id: Date.now(),
@@ -217,6 +230,7 @@ export function useTrafficEngine() {
 
     getTotalVehicles,
     clearVehicles,
+    resetDashboard,
 
   };
 }
