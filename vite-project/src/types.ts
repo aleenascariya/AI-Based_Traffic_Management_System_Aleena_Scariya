@@ -28,6 +28,7 @@ export interface TrafficRecord {
   id: number;
   totalVehicles: number;
   activeLane: LaneDirection;
+  controlMode: ControlMode;
 }
 
 export interface AIRecommendation {

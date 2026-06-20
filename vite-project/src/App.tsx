@@ -253,6 +253,8 @@ export default function App() {
                   Vehicles: {record.totalVehicles}
                   {" | "}
                   Active Lane: {record.activeLane}
+		  {" | "}
+		  Mode: {record.controlMode}
                 </li>
               ))}
             </ul>
