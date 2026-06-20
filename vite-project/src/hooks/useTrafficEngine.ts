@@ -261,6 +261,10 @@ export function useTrafficEngine() {
 
     addLog("AI insight generated");
   };
+    
+    const clearLogs = () => {
+      setLogs([]);
+    }; 
 
   return {
     controlMode,
@@ -303,5 +307,6 @@ export function useTrafficEngine() {
     generateDemoTraffic,
 
     getTrafficStatus,
+    clearLogs,
   };
 }
