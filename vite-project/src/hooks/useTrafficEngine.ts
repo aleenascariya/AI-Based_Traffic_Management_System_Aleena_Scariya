@@ -158,6 +158,14 @@ export function useTrafficEngine() {
     setActiveGreenLane("North");
     setControlMode("adaptive");
     setIsPlaying(false);
+
+    setLogs([
+      {
+        id: Date.now(),
+        time: new Date().toLocaleTimeString(),
+        message: "Dashboard reset",
+      },
+    ]);
   };
 
   const generateDemoTraffic = () => {
