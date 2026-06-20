@@ -90,6 +90,24 @@ export function useTrafficEngine() {
   return allVehicles.length;
   };
 
+  const getTrafficStatus = () => {
+    const totalVehicles = getTotalVehicles();
+
+    if (totalVehicles === 0) {
+      return "Idle";
+    }
+
+    if (totalVehicles <= 10) {
+    return "Normal";
+    }
+
+    if (totalVehicles <= 20) {
+      return "Busy";
+    }
+
+    return "Congested";
+  };
+
   const generateRecommendation = () => {
     const busiestLane = getHighestDensityLane();
 
@@ -271,5 +289,6 @@ export function useTrafficEngine() {
     resetDashboard,
     generateDemoTraffic,
 
+    getTrafficStatus,
   };
 }
