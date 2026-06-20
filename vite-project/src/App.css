@@ -13,3 +13,32 @@ body {
 button {
   cursor: pointer;
 }
+
+.app {
+  min-height: 100vh;
+}
+
+header {
+  background: #111827;
+  color: white;
+  padding: 20px;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+
+aside {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

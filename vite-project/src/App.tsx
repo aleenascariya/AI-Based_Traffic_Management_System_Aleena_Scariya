@@ -7,7 +7,7 @@ export default function App() {
   const laneCounts = engine.getLaneCounts();
 
   return (
-    <div>
+    <div className="app">
       <header>
         <h1>NeuralTraffic AI</h1>
         <p>Dynamic Stream: ONLINE</p>
