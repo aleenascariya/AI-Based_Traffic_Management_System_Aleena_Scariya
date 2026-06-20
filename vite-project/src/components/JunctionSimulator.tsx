@@ -17,6 +17,10 @@ export function JunctionSimulator({
         Green Signal: {activeLane}
       </h3>
 
+      <p>
+        Total Vehicles: {vehicles.length}
+      </p>
+
       <ul>
         <li>
           North: {
