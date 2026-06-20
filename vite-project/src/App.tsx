@@ -314,6 +314,12 @@ export default function App() {
           </div>
         </section>
       </main>
+      <footer>
+        <p>
+          NeuralTraffic AI v1.0
+        </p>
+      </footer>
+
     </div>
   );
 }
