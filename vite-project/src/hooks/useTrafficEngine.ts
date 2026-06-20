@@ -1,10 +1,10 @@
-import { useState } from "react";
 import {
-  ControlMode,
-  Vehicle,
-  LaneDirection,
   ActivityLog,
+  AIRecommendation,
+  ControlMode,
+  LaneDirection,
   TrafficRecord,
+  Vehicle,
 } from "../types";
 
 export function useTrafficEngine() {
@@ -128,6 +128,9 @@ if (controlMode === "adaptive") {
 
   addLog("Traffic metrics saved");
 };
+ 
+  const [recommendations, setRecommendations] =
+  useState<AIRecommendation[]>([]);
 
   return {
     controlMode,
@@ -147,5 +150,6 @@ if (controlMode === "adaptive") {
     saveTrafficMetrics,
     getHighestDensityLane,
     runAdaptiveControl,
+    recommendations,
   };
 }
