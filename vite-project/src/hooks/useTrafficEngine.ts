@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import {
+import type {
   ActivityLog,
   AIInsight,
   AIRecommendation,

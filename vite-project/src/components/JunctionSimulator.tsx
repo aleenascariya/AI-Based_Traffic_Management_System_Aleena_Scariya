@@ -1,4 +1,4 @@
-import { LaneDirection, Vehicle } from "../types";
+import type { LaneDirection, Vehicle } from "../types";
 
 interface JunctionSimulatorProps {
   vehicles: Vehicle[];
