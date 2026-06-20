@@ -302,6 +302,8 @@ export default function App() {
                   Active Lane: {record.activeLane}
 		  {" | "}
 		  Mode: {record.controlMode}
+		  {" | "}
+                  Saved: {record.savedAt}
                 </li>
               ))}
             </ul>
