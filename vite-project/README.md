@@ -23,8 +23,12 @@ NeuralTraffic AI is a smart traffic management dashboard built with React and Ty
 
 src/
 ├── components/
+│   └── JunctionSimulator.tsx
 ├── hooks/
+│   └── useTrafficEngine.ts
 ├── App.tsx
+├── App.css
+├── main.tsx
 └── types.ts
 
 ## Running the Project
