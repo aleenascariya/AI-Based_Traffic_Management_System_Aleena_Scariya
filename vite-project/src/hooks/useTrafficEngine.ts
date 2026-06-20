@@ -86,6 +86,10 @@ export function useTrafficEngine() {
     return highestLane;
   };
 
+  const getTotalVehicles = () => {
+  return allVehicles.length;
+  };
+
   const generateRecommendation = () => {
     const busiestLane = getHighestDensityLane();
 
@@ -203,5 +207,6 @@ export function useTrafficEngine() {
 
     generateRecommendation,
     generateInsight,
+    getTotalVehicles,
   };
 }
