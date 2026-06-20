@@ -106,6 +106,17 @@ if (controlMode === "adaptive") {
   return highestLane;
 };
  
+  const generateRecommendation = () => {
+  const busiestLane = getHighestDensityLane();
+
+  const recommendation: AIRecommendation = {
+    id: Date.now(),
+    message: `Prioritize ${busiestLane} traffic flow`,
+  };
+
+  setRecommendations([recommendation]);
+};
+ 
   const runAdaptiveControl = () => {
   const nextLane = getHighestDensityLane();
 
@@ -151,5 +162,6 @@ if (controlMode === "adaptive") {
     getHighestDensityLane,
     runAdaptiveControl,
     recommendations,
+    generateRecommendation,
   };
 }
