@@ -183,6 +183,29 @@ export default function App() {
             <p>{engine.activeGreenLane}</p>
           </div>
 
+	  <div>
+	    <h3>Traffic Statistics</h3>
+	    
+	    <ul>
+
+	        <li>
+
+		Total Vehicles: {engine.getTotalVehicles()}
+
+		</li>
+
+
+		<li>
+	          Busiest Lane: {engine.getHighestDensityLane()}
+
+		</li>
+
+		<li>
+		 Current Signal: {engine.activeGreenLane}
+		</li>
+	    </ul>
+	   </div>
+
           <JunctionSimulator
             vehicles={engine.allVehicles}
             activeLane={engine.activeGreenLane}
