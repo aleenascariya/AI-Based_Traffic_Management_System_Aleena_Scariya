@@ -217,6 +217,12 @@ export function useTrafficEngine() {
   };
 
   const saveTrafficMetrics = () => {
+    if (allVehicles.length === 0) {
+      addLog("Save failed: no traffic data");
+
+      return;
+    }
+
     const newRecord: TrafficRecord = {
       id: Date.now(),
       totalVehicles: allVehicles.length,
