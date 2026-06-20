@@ -149,6 +149,9 @@ if (controlMode === "adaptive") {
   const [insights, setInsights] =
   useState<AIInsight[]>([]);
 
+  const [currentPrompt, setCurrentPrompt] =
+  useState("");
+
   return {
     controlMode,
     setControlMode,
@@ -170,5 +173,7 @@ if (controlMode === "adaptive") {
     recommendations,
     generateRecommendation,
     insights,
+    currentPrompt,
+    setCurrentPrompt,
   };
 }
