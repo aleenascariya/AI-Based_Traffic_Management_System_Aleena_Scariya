@@ -146,6 +146,7 @@ export function useTrafficEngine() {
       id: Date.now(),
       totalVehicles: allVehicles.length,
       activeLane: activeGreenLane,
+      controlMode,
     };
 
     setSavedRecords((prev) => [
