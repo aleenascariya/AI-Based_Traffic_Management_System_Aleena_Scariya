@@ -46,11 +46,16 @@ export function useTrafficEngine() {
 	  id: Date.now(),
 	  lane,
   };
-  setAllVehicles((prev) => [
-  ...prev,
-  newVehicle,
-]);
+  setAllVehicles((prev) => {
+  const updatedVehicles = [
+    ...prev,
+    newVehicle,
+  ];
 
+  return updatedVehicles;
+});
+
+feature/adaptive-control
 addLog(`Vehicle added to ${lane}`);
 
 if (controlMode === "adaptive") {
@@ -106,6 +111,34 @@ if (controlMode === "adaptive") {
   return highestLane;
 };
  
+  const runAdaptiveControl = () => {
+  const nextLane = getHighestDensityLane();
+
+  setActiveGreenLane(nextLane);
+
+  addLog(`Adaptive mode selected ${nextLane}`);
+};
+
+  const getHighestDensityLane = (): LaneDirection => {
+  const counts = getLaneCounts();
+
+  let highestLane: LaneDirection = "North";
+
+  if (counts.East > counts[highestLane]) {
+    highestLane = "East";
+  }
+
+  if (counts.South > counts[highestLane]) {
+    highestLane = "South";
+  }
+
+  if (counts.West > counts[highestLane]) {
+    highestLane = "West";
+  }
+
+  return highestLane;
+};
+
   const runAdaptiveControl = () => {
   const nextLane = getHighestDensityLane();
 
