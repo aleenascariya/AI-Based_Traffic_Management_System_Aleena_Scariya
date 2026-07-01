@@ -1,21 +1,22 @@
 import Header from "./components/layout/Header";
 import { JunctionSimulator } from "./components/JunctionSimulator";
 import { useTrafficEngine } from "./hooks/useTrafficEngine";
+import Card from "./components/ui/Card";
 
 export default function App() {
   const engine = useTrafficEngine();
   const laneCounts = engine.getLaneCounts();
 
   return (
-    <div className="app">
+    <div className="min-h-screen bg-[#0F1115] text-white">
       <Header
         latency="14 ms"
         version="v1.0"
         streamStatus="ONLINE"
       />
 
-      <main>
-        <aside>
+      <main className="grid grid-cols-[320px_1fr] gap-6 p-6">
+        <aside className="bg-[#14171D] border border-white/10 rounded-2xl p-6 shadow-lg">
           <h3>Control Paradigm</h3>
 
           <p>Current Mode: {engine.controlMode}</p>
@@ -144,8 +145,8 @@ export default function App() {
 	  
         </aside>
 
-        <section>
-          <div>
+        <section className="grid gap-6">
+          <Card tiltle="AI Status">
             <h3>AI Status</h3>
 
             <p>
@@ -153,9 +154,9 @@ export default function App() {
                 ? "Adaptive optimization active"
                 : "Fixed timing active"}
             </p>
-          </div>
+          </Card>
 
-          <div>
+          <Card title="AI Recommendations">
             <h3>AI Recommendations</h3>
 
             {engine.recommendations.length === 0 ? (
@@ -171,9 +172,9 @@ export default function App() {
                 )}
               </ul>
             )}
-          </div>
+          </Card>
 
-          <div>
+          <Card title="AI Insights">
             <h3>AI Insights</h3>
 
             <textarea
@@ -207,9 +208,9 @@ export default function App() {
                 ))}
               </ul>
             )}
-          </div>
+          </Card>
 
-          <div>
+          <Card title="Active Signal">
             <h3>Active Signal</h3>
 
             <div className="signal-status">
@@ -217,9 +218,9 @@ export default function App() {
 
               <p>{engine.activeGreenLane}</p>
             </div>
-          </div>
+          </Card>
 
-	  <div>
+	  <Card title="Traffic Statistics">
 	    <h3>Traffic Statistics</h3>
 	    
 	    <ul>
@@ -240,9 +241,9 @@ export default function App() {
 		 Current Signal: {engine.activeGreenLane}
 		</li>
 	    </ul>
-	   </div>
+	   </Card>
 
-          <div>
+          <Card title="System Health">
             <h3>System Health</h3>
 
 	    <ul>
@@ -256,14 +257,14 @@ export default function App() {
                 Mode: {engine.controlMode}
               </li>
             </ul>
-          </div>
+          </Card>
 
           <JunctionSimulator
             vehicles={engine.allVehicles}
             activeLane={engine.activeGreenLane}
           />
 
-          <div>
+          <Card title="Live Density">
             <h3>Live Density</h3>
 
             <ul>
@@ -272,9 +273,9 @@ export default function App() {
               <li>South: {laneCounts.South}</li>
               <li>West: {laneCounts.West}</li>
             </ul>
-          </div>
+          </Card>
 
-          <div>
+          <Card title="Activity Stream">
             <h3>Activity Stream</h3>
 
 	    <button onClick={engine.clearLogs}>
@@ -292,9 +293,9 @@ export default function App() {
                 ))}
               </ul>
             )}
-          </div>
+          </Card>
 
-          <div>
+          <Card title="Data Registry">
             <h3>Data Registry</h3>
 
             <button
@@ -324,7 +325,7 @@ export default function App() {
                 ))}
               </ul>
             )}
-          </div>
+          </Card>
         </section>
       </main>
       <footer>
