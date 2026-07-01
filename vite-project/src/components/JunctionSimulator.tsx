@@ -45,8 +45,18 @@ export function JunctionSimulator({
       {/* Horizontal Road */}
       <div className="absolute left-0 top-1/2 h-28 w-full -translate-y-1/2 bg-[#2B313C]" />
 
+      {/* Vertical Lane Divider */}
+<div className="absolute left-1/2 top-0 h-full w-1 -translate-x-1/2">
+  <div className="h-full border-l-2 border-dashed border-yellow-300/60"></div>
+</div>
+
+{/* Horizontal Lane Divider */}
+<div className="absolute top-1/2 left-0 h-1 w-full -translate-y-1/2">
+  <div className="w-full border-t-2 border-dashed border-yellow-300/60"></div>
+</div>
+
       {/* Junction */}
-      <div className="absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-1/2 rounded-lg border border-cyan-500/30 bg-[#3B4350]" />
+      <div className="absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-1/2 rounded-lg border border-cyan-500/30 bg-gradient-to-br from-slate-700 to-slate-800" />
 
       {/* Road Labels */}
       <div className="absolute top-2 left-1/2 -translate-x-1/2 text-sm font-bold text-white">
@@ -65,6 +75,48 @@ export function JunctionSimulator({
         EAST
       </div>
 
+      {/* Zebra Crossings */}
+
+<div className="absolute left-1/2 top-[105px] -translate-x-1/2 flex gap-1">
+  {[...Array(6)].map((_, i) => (
+    <div key={i} className="h-10 w-2 bg-white/80 rounded-sm" />
+  ))}
+</div>
+
+<div className="absolute left-1/2 bottom-[105px] -translate-x-1/2 flex gap-1">
+  {[...Array(6)].map((_, i) => (
+    <div key={i} className="h-10 w-2 bg-white/80 rounded-sm" />
+  ))}
+</div>
+
+<div className="absolute top-1/2 left-[105px] -translate-y-1/2 flex flex-col gap-1">
+  {[...Array(6)].map((_, i) => (
+    <div key={i} className="w-10 h-2 bg-white/80 rounded-sm" />
+  ))}
+</div>
+
+<div className="absolute top-1/2 right-[105px] -translate-y-1/2 flex flex-col gap-1">
+  {[...Array(6)].map((_, i) => (
+    <div key={i} className="w-10 h-2 bg-white/80 rounded-sm" />
+  ))}
+</div>
+
+      <div className="absolute top-20 left-1/2 -translate-x-1/2 text-3xl text-white/60">
+  ↓
+</div>
+
+<div className="absolute bottom-20 left-1/2 -translate-x-1/2 text-3xl text-white/60">
+  ↑
+</div>
+
+<div className="absolute left-20 top-1/2 -translate-y-1/2 text-3xl text-white/60">
+  →
+</div>
+
+<div className="absolute right-20 top-1/2 -translate-y-1/2 text-3xl text-white/60">
+  ←
+</div>
+
       {/* Traffic Lights */}
       {(["North", "East", "South", "West"] as LaneDirection[]).map((lane) => (
         <div
@@ -73,7 +125,7 @@ export function JunctionSimulator({
           className="absolute flex flex-col items-center"
         >
           <div
-            className={`h-5 w-5 rounded-full border-2 transition-all duration-500 ${
+            className={`h-7 w-7 rounded-full border-2 transition-all duration-500 ${
               activeLane === lane
                 ? "border-green-300 bg-green-500 shadow-[0_0_15px_rgba(34,197,94,0.8)]"
                 : "border-red-300 bg-red-500"
@@ -128,7 +180,20 @@ export function JunctionSimulator({
           <div
             key={vehicle.id}
             style={style}
-            className="absolute h-4 w-8 rounded-md border border-cyan-300 bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.8)] transition-all duration-500"
+            className="
+absolute
+h-5
+w-10
+rounded-lg
+border
+border-cyan-200
+bg-gradient-to-r
+from-cyan-300
+to-cyan-500
+shadow-[0_0_15px_rgba(34,211,238,0.8)]
+transition-all
+duration-500
+"
           />
         );
       })}

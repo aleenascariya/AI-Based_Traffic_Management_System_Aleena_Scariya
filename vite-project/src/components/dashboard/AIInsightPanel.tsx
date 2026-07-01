@@ -43,10 +43,24 @@ export default function AIInsightPanel({
         </p>
 
         {insights.length === 0 ? (
-          <div className="rounded-xl border border-dashed border-white/10 p-6 text-center text-slate-500">
-            No insights generated yet.
-          </div>
-        ) : (
+    <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-cyan-500/20 bg-cyan-500/5 p-8">
+
+        <div className="text-4xl mb-3">
+            🧠
+        </div>
+
+        <h3 className="font-semibold text-white">
+            AI Insight Engine
+        </h3>
+
+        <p className="mt-2 text-center text-sm text-slate-400">
+            Enter a prompt above and click
+            <strong> Generate Insight</strong>
+            to receive AI analysis.
+        </p>
+
+    </div>
+) : (
           <div className="space-y-3">
             {insights.map((insight) => (
               <div
