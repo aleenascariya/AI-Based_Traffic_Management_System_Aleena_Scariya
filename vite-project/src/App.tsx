@@ -8,6 +8,7 @@ import StatusBadge from "./components/ui/StatusBadge";
 import AIStatusPanel from "./components/dashboard/AIStatusPanel";
 import PrimaryButton from "./components/ui/PrimaryButton";
 import AIRecommendationPanel from "./components/dashboard/AIRecommendationPanel";
+import AIInsightPanel from "./components/dashboard/AIInsightPanel";
 
 export default function App() {
   const engine = useTrafficEngine();
@@ -160,40 +161,12 @@ export default function App() {
     recommendations={engine.recommendations}
 />
 
-          <Card title="AI Insights">
-
-            <textarea
-              value={engine.currentPrompt}
-              onChange={(event) =>
-                engine.setCurrentPrompt(
-                  event.target.value
-                )
-              }
-              placeholder="Ask AI about current traffic conditions"
-            />
-
-            <PrimaryButton
-              onClick={engine.generateInsight}
-            >
-              Generate Insight
-            </PrimaryButton>
-
-	    <p>
-              Enter a prompt before generating insights.
-            </p>
-
-            {engine.insights.length === 0 ? (
-              <p>No insights generated</p>
-            ) : (
-              <ul>
-                {engine.insights.map((insight) => (
-                  <li key={insight.id}>
-                    {insight.response}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </Card>
+          <AIInsightPanel
+  currentPrompt={engine.currentPrompt}
+  setCurrentPrompt={engine.setCurrentPrompt}
+  generateInsight={engine.generateInsight}
+  insights={engine.insights}
+/>
 
           <Card title="Active Signal">
 
