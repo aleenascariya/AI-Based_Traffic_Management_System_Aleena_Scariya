@@ -56,58 +56,75 @@ export default function App() {
     Fixed Clock
 </PrimaryButton>
 
-          <div>
-            <p>
-              {engine.isPlaying
-                ? "Active Processing"
-                : "Paused"}
-            </p>
+          <div className="mt-4">
 
-            <button
-              onClick={() =>
-                engine.setIsPlaying(!engine.isPlaying)
-              }
-            >
-              {engine.isPlaying ? "Pause" : "Play"}
-            </button>
-          </div>
+<p className="mb-3 text-sm text-slate-400">
+
+{engine.isPlaying ?
+
+"Simulation Running"
+
+:
+
+"Simulation Paused"}
+
+</p>
+
+<PrimaryButton
+className="w-full rounded-xl bg-cyan-500 py-2 font-semibold text-black hover:bg-cyan-400 transition"
+onClick={() =>
+engine.setIsPlaying(!engine.isPlaying)
+}
+>
+
+{engine.isPlaying ?
+
+"Pause Simulation"
+
+:
+
+"Start Simulation"}
+
+</PrimaryButton>
+
+</div>
 
           <div className="border-t border-white/10 pt-6 mt-6">
 	  <h3 className="text-xs uppercase tracking-[0.25em] text-cyan-400 font-bold mb-4">
     VEHICLE INJECTION
 </h3>
 
-            <button
-              onClick={() =>
-                engine.handleInjectVehicle("North")
-              }
-            >
-              Add North Vehicle
-            </button>
+            <div className="grid grid-cols-2 gap-3 mt-3">
 
-            <button
-              onClick={() =>
-                engine.handleInjectVehicle("East")
-              }
-            >
-              Add East Vehicle
-            </button>
+    <PrimaryButton
+        onClick={() => engine.handleInjectVehicle("North")}
+        className="w-full rounded-lg bg-cyan-500 py-2 text-black font-semibold hover:bg-cyan-400 transition"
+    >
+        North
+    </PrimaryButton>
 
-            <button
-              onClick={() =>
-                engine.handleInjectVehicle("South")
-              }
-            >
-              Add South Vehicle
-            </button>
+    <PrimaryButton
+        onClick={() => engine.handleInjectVehicle("East")}
+        className="w-full rounded-lg bg-cyan-500 py-2 text-black font-semibold hover:bg-cyan-400 transition"
+    >
+        East
+    </PrimaryButton>
 
-            <button
-              onClick={() =>
-                engine.handleInjectVehicle("West")
-              }
-            >
-              Add West Vehicle
-            </button>
+    <PrimaryButton
+        onClick={() => engine.handleInjectVehicle("South")}
+        className="w-full rounded-lg bg-cyan-500 py-2 text-black font-semibold hover:bg-cyan-400 transition"
+    >
+        South
+    </PrimaryButton>
+
+    <PrimaryButton
+        onClick={() => engine.handleInjectVehicle("West")}
+        className="w-full rounded-lg bg-cyan-500 py-2 text-black font-semibold hover:bg-cyan-400 transition"
+    >
+        West
+    </PrimaryButton>
+
+</div>
           </div>
 
           <div className="border-t border-white/10 pt-6 mt-6">
@@ -115,37 +132,39 @@ export default function App() {
         PHASE OVERRIDES
     </h3>
 
-            <button
+            <div className="grid grid-cols-2 gap-3 mt-3">
+            <PrimaryButton
               onClick={() =>
                 engine.handleOverrideLane("North")
               }
             >
               North
-            </button>
+            </PrimaryButton>
 
-            <button
+            <PrimaryButton
               onClick={() =>
                 engine.handleOverrideLane("East")
               }
             >
               East
-            </button>
+            </PrimaryButton>
 
-            <button
+            <PrimaryButton
               onClick={() =>
                 engine.handleOverrideLane("South")
               }
             >
               South
-            </button>
+            </PrimaryButton>
 
-            <button
+            <PrimaryButton
               onClick={() =>
                 engine.handleOverrideLane("West")
               }
             >
               West
-            </button>
+            </PrimaryButton>
+	    </div>
           </div>
 
 	  <div className="border-t border-white/10 pt-6 mt-6">
@@ -198,15 +217,6 @@ export default function App() {
 
 	  </div>
 
-	  <Card title="Active Signal">
-
-            <div className="signal-status">
-              <span className="signal-dot"></span>
-
-              <p>{engine.activeGreenLane}</p>
-            </div>
-          </Card>
-
 	  <div className="col-span-12">
 	  <Card title="Traffic Statistics">
 	    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -235,18 +245,47 @@ export default function App() {
 
           <Card title="System Health">
 
-	    <ul>
-              <li>Status: {engine.getTrafficStatus()}</li>
+<div className="space-y-4">
 
-              <li>
-                Vehicles: {engine.getTotalVehicles()}
-              </li>
+<div className="flex justify-between">
 
-              <li>
-                Mode: {engine.controlMode}
-              </li>
-            </ul>
-          </Card>
+<span className="text-slate-400">
+Status
+</span>
+
+<span className="font-semibold text-green-400">
+{engine.getTrafficStatus()}
+</span>
+
+</div>
+
+<div className="flex justify-between">
+
+<span className="text-slate-400">
+Vehicles
+</span>
+
+<span className="font-semibold text-cyan-400">
+{engine.getTotalVehicles()}
+</span>
+
+</div>
+
+<div className="flex justify-between">
+
+<span className="text-slate-400">
+Mode
+</span>
+
+<span className="font-semibold capitalize">
+{engine.controlMode}
+</span>
+
+</div>
+
+</div>
+
+</Card>
 
 	  <div className="col-span-12">
           <Card
@@ -394,8 +433,22 @@ export default function App() {
             </PrimaryButton>
 
             {engine.logs.length === 0 ? (
-              <p>No activity available</p>
-            ) : (
+    <div className="flex flex-col items-center justify-center py-8">
+
+        <div className="text-4xl">
+            📋
+        </div>
+
+        <h3 className="mt-3 font-semibold text-white">
+            Activity Timeline
+        </h3>
+
+        <p className="mt-2 text-sm text-slate-400">
+            System events will appear here.
+        </p>
+
+    </div>
+) : (
               <ul>
                 {engine.logs.map((log) => (
                   <li key={log.id}>
@@ -419,8 +472,22 @@ export default function App() {
             </p>
 
             {engine.savedRecords.length === 0 ? (
-              <p>No records saved</p>
-            ) : (
+    <div className="flex flex-col items-center justify-center py-8">
+
+        <div className="text-4xl">
+            💾
+        </div>
+
+        <h3 className="mt-3 font-semibold text-white">
+            No Snapshots
+        </h3>
+
+        <p className="mt-2 text-sm text-slate-400">
+            Save traffic metrics to create your first record.
+        </p>
+
+    </div>
+) : (
               <ul>
                 {engine.savedRecords.map((record) => (
                   <li key={record.id}>

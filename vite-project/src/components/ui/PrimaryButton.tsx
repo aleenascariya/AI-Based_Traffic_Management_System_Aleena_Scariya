@@ -9,17 +9,25 @@ export default function PrimaryButton({
     <button
       {...props}
       className={clsx(
-        "rounded-xl",
-        "bg-cyan-500",
-        "px-4 py-2",
-        "font-semibold",
-        "text-black",
-        "transition-all",
-        "duration-200",
-        "hover:bg-cyan-400",
-        "active:scale-95",
-        className
-      )}
+  "w-full",
+  "rounded-xl",
+  "bg-cyan-500",
+  "py-2.5",
+  "px-4",
+  "font-semibold",
+  "text-black",
+
+  "transition-all",
+  "duration-300",
+
+  "hover:bg-cyan-400",
+  "hover:shadow-[0_0_20px_rgba(34,211,238,0.35)]",
+  "hover:-translate-y-0.5",
+
+  "active:scale-95",
+
+  className
+)}
     />
   );
 }
