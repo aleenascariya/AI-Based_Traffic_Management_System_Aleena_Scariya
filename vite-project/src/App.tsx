@@ -5,6 +5,8 @@ import Card from "./components/ui/Card";
 import StatCard from "./components/ui/StatCard";
 import { Car, TrafficCone, Circle } from "lucide-react";
 import StatusBadge from "./components/ui/StatusBadge";
+import AIStatusPanel from "./components/dashboard/AIStatusPanel";
+import PrimaryButton from "./components/ui/PrimaryButton";
 
 export default function App() {
   const engine = useTrafficEngine();
@@ -149,18 +151,11 @@ export default function App() {
         </aside>
 
         <section className="grid gap-6">
-          <Card tiltle="AI Status">
-            <h3>AI Status</h3>
-
-            <p>
-              {engine.controlMode === "adaptive"
-                ? "Adaptive optimization active"
-                : "Fixed timing active"}
-            </p>
-          </Card>
+          <AIStatusPanel
+    controlMode={engine.controlMode}
+/>
 
           <Card title="AI Recommendations">
-            <h3>AI Recommendations</h3>
 
             {engine.recommendations.length === 0 ? (
               <p>Add vehicles to recieve AI recommendations</p>
@@ -178,7 +173,6 @@ export default function App() {
           </Card>
 
           <Card title="AI Insights">
-            <h3>AI Insights</h3>
 
             <textarea
               value={engine.currentPrompt}
@@ -190,11 +184,11 @@ export default function App() {
               placeholder="Ask AI about current traffic conditions"
             />
 
-            <button
+            <PrimaryButton
               onClick={engine.generateInsight}
             >
               Generate Insight
-            </button>
+            </PrimaryButton>
 
 	    <p>
               Enter a prompt before generating insights.
@@ -214,7 +208,6 @@ export default function App() {
           </Card>
 
           <Card title="Active Signal">
-            <h3>Active Signal</h3>
 
             <div className="signal-status">
               <span className="signal-dot"></span>
@@ -248,7 +241,6 @@ export default function App() {
 	   </Card>
 
           <Card title="System Health">
-            <h3>System Health</h3>
 
 	    <ul>
               <li>Status: {engine.getTrafficStatus()}</li>
@@ -263,10 +255,14 @@ export default function App() {
             </ul>
           </Card>
 
-          <JunctionSimulator
-            vehicles={engine.allVehicles}
-            activeLane={engine.activeGreenLane}
-          />
+          <Card title="Intersection Simulator">
+
+    <JunctionSimulator
+        vehicles={engine.allVehicles}
+        activeLane={engine.activeGreenLane}
+    />
+
+</Card>
 
           <Card title="Live Density">
 
@@ -333,7 +329,6 @@ export default function App() {
           </Card>
 
           <Card title="Activity Stream">
-            <h3>Activity Stream</h3>
 
 	    <button onClick={engine.clearLogs}>
               Clear Logs
@@ -353,7 +348,6 @@ export default function App() {
           </Card>
 
           <Card title="Data Registry">
-            <h3>Data Registry</h3>
 
             <button
               onClick={engine.saveTrafficMetrics}
