@@ -248,16 +248,80 @@ export default function App() {
             </ul>
           </Card>
 
-          <Card title="Intersection Simulator">
+	  <div className="col-span-12">
+          <Card
+    title="Intersection Simulator"
+    headerAction={
+        <StatusBadge status="live" />
+    }
+>
 
-    <div className="col-span-12">
+    <div className="space-y-4">
+
+        <div className="flex items-center justify-between">
+
+            <div>
+
+                <p className="text-xs uppercase tracking-widest text-slate-500">
+                    Current Signal
+                </p>
+
+                <h2 className="text-2xl font-extrabold text-green-400">
+                    {engine.activeGreenLane}
+                </h2>
+
+            </div>
+
+            <div className="text-right">
+
+                <p className="text-xs uppercase tracking-widest text-slate-500">
+                    Vehicles
+                </p>
+                <h2 className="text-2xl font-extrabold text-cyan-400">
+                    {engine.getTotalVehicles()}
+                </h2>
+
+            </div>
+
+        </div>
+
+        <div className="rounded-2xl border border-cyan-500/20 bg-gradient-to-b from-[#151922] to-[#0F1115] p-5 shadow-inner">
+
+    <div className="mb-4 flex items-center justify-between">
+
+        <div>
+            <p className="text-xs uppercase tracking-[0.2em] text-slate-500">
+                Live Feed
+            </p>
+
+            <h3 className="text-lg font-bold text-white">
+                AI Traffic Simulation
+            </h3>
+        </div>
+
+        <div className="flex items-center gap-2 rounded-full border border-green-500/20 bg-green-500/10 px-3 py-1">
+
+            <span className="h-2 w-2 rounded-full bg-green-400 animate-pulse"></span>
+
+            <span className="text-xs font-bold text-green-400">
+                LIVE
+            </span>
+
+        </div>
+
+    </div>
+
     <JunctionSimulator
         vehicles={engine.allVehicles}
         activeLane={engine.activeGreenLane}
     />
+
+</div>
+
     </div>
 
 </Card>
+</div>
 
           <Card title="Live Density">
 
