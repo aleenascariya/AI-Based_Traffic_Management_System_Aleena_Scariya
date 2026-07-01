@@ -1,4 +1,4 @@
-
+import Header from "./components/layout/Header";
 import { JunctionSimulator } from "./components/JunctionSimulator";
 import { useTrafficEngine } from "./hooks/useTrafficEngine";
 
@@ -8,12 +8,11 @@ export default function App() {
 
   return (
     <div className="app">
-      <header>
-        <h1>NeuralTraffic AI</h1>
-        <p>
-          Dynamic Stream: ONLINE | Smart Traffic Optimization
-        </p>
-      </header>
+      <Header
+        latency="14 ms"
+        version="v1.0"
+        streamStatus="ONLINE"
+      />
 
       <main>
         <aside>
