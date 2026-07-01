@@ -9,6 +9,7 @@ import AIStatusPanel from "./components/dashboard/AIStatusPanel";
 import PrimaryButton from "./components/ui/PrimaryButton";
 import AIRecommendationPanel from "./components/dashboard/AIRecommendationPanel";
 import AIInsightPanel from "./components/dashboard/AIInsightPanel";
+import Sidebar from "./components/layout/Sidebar";
 
 export default function App() {
   const engine = useTrafficEngine();
@@ -22,200 +23,54 @@ export default function App() {
         streamStatus="ONLINE"
       />
 
-      <main className="grid grid-cols-[320px_1fr] gap-6 p-6">
-        <aside className="sticky top-6 h-[calc(100vh-7rem)] overflow-y-auto bg-[#14171D] border border-white/10 rounded-2xl p-6 shadow-lg">
-          <h3 className="text-xs uppercase tracking-[0.25em] text-cyan-400 font-bold mb-4">
-    AI CONTROL
-</h3>
+      <main className="grid grid-cols-[280px_1fr] gap-6 p-6">
+        <Sidebar engine={engine} />
 
-          <div className="mb-4 rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-3">
+          
+               
 
-    <p className="text-xs text-slate-400 uppercase">
-        Current Mode
-    </p>
-
-    <h2 className="text-lg font-bold text-white mt-1">
-        {engine.controlMode === "adaptive"
-            ? "Adaptive AI"
-            : "Fixed Clock"}
-    </h2>
-
-</div>
-
-          <PrimaryButton
-    className="w-full mb-3"
-    onClick={() => engine.setControlMode("adaptive")}
->
-    Adaptive AI
-</PrimaryButton>
-
-          <PrimaryButton
-    className="w-full"
-    onClick={() => engine.setControlMode("fixed")}
->
-    Fixed Clock
-</PrimaryButton>
-
-          <div className="mt-4">
-
-<p className="mb-3 text-sm text-slate-400">
-
-{engine.isPlaying ?
-
-"Simulation Running"
-
-:
-
-"Simulation Paused"}
-
-</p>
-
-<PrimaryButton
-className="w-full rounded-xl bg-cyan-500 py-2 font-semibold text-black hover:bg-cyan-400 transition"
-onClick={() =>
-engine.setIsPlaying(!engine.isPlaying)
-}
->
-
-{engine.isPlaying ?
-
-"Pause Simulation"
-
-:
-
-"Start Simulation"}
-
-</PrimaryButton>
-
-</div>
-
-          <div className="border-t border-white/10 pt-6 mt-6">
-	  <h3 className="text-xs uppercase tracking-[0.25em] text-cyan-400 font-bold mb-4">
-    VEHICLE INJECTION
-</h3>
-
-            <div className="grid grid-cols-2 gap-3 mt-3">
-
-    <PrimaryButton
-        onClick={() => engine.handleInjectVehicle("North")}
-        className="w-full rounded-lg bg-cyan-500 py-2 text-black font-semibold hover:bg-cyan-400 transition"
-    >
-        North
-    </PrimaryButton>
-
-    <PrimaryButton
-        onClick={() => engine.handleInjectVehicle("East")}
-        className="w-full rounded-lg bg-cyan-500 py-2 text-black font-semibold hover:bg-cyan-400 transition"
-    >
-        East
-    </PrimaryButton>
-
-    <PrimaryButton
-        onClick={() => engine.handleInjectVehicle("South")}
-        className="w-full rounded-lg bg-cyan-500 py-2 text-black font-semibold hover:bg-cyan-400 transition"
-    >
-        South
-    </PrimaryButton>
-
-    <PrimaryButton
-        onClick={() => engine.handleInjectVehicle("West")}
-        className="w-full rounded-lg bg-cyan-500 py-2 text-black font-semibold hover:bg-cyan-400 transition"
-    >
-        West
-    </PrimaryButton>
-
-</div>
-          </div>
-
-          <div className="border-t border-white/10 pt-6 mt-6">
-    <h3 className="text-xs uppercase tracking-[0.25em] text-cyan-400 font-bold mb-4">
-        PHASE OVERRIDES
-    </h3>
-
-            <div className="grid grid-cols-2 gap-3 mt-3">
-            <PrimaryButton
-              onClick={() =>
-                engine.handleOverrideLane("North")
-              }
-            >
-              North
-            </PrimaryButton>
-
-            <PrimaryButton
-              onClick={() =>
-                engine.handleOverrideLane("East")
-              }
-            >
-              East
-            </PrimaryButton>
-
-            <PrimaryButton
-              onClick={() =>
-                engine.handleOverrideLane("South")
-              }
-            >
-              South
-            </PrimaryButton>
-
-            <PrimaryButton
-              onClick={() =>
-                engine.handleOverrideLane("West")
-              }
-            >
-              West
-            </PrimaryButton>
-	    </div>
-          </div>
-
-	  <div className="border-t border-white/10 pt-6 mt-6">
-    <h3 className="text-xs uppercase tracking-[0.25em] text-cyan-400 font-bold mb-4">
-        SIMULATION CONTROLS
-    </h3>
-
-            <PrimaryButton
-              onClick={engine.generateDemoTraffic}
-            >
-              Generate Demo Traffic
-            </PrimaryButton>
-
-            <PrimaryButton
-              onClick={engine.clearVehicles}
-            >
-              Clear Vehicles
-            </PrimaryButton>
-
-            <PrimaryButton
-              onClick={engine.resetDashboard}
-            >
-              Reset Dashboard
-            </PrimaryButton>
-          </div>
-	  
-        </aside>
-
-        <section className="grid grid-cols-12 gap-6 auto-rows-min">
-          <div className="col-span-6">
+        <section className="grid grid-cols-12 gap-6">
+          <div className="col-span-12 lg:col-span-6">
 	  <AIStatusPanel
     controlMode={engine.controlMode}
 />
            </div>
 
-	   <div className="col-span-6">
+	   <div className="col-span-12 lg:col-span-6">
           <AIRecommendationPanel
     recommendations={engine.recommendations}
 />
 
           </div>
 
-	  <div className="col-span-8">
-	  <AIInsightPanel
-  currentPrompt={engine.currentPrompt}
-  setCurrentPrompt={engine.setCurrentPrompt}
-  generateInsight={engine.generateInsight}
-  insights={engine.insights}
-/>
+	  <div className="col-span-12 lg:col-span-8">
+    <AIInsightPanel
+    currentPrompt={engine.currentPrompt}
+    setCurrentPrompt={engine.setCurrentPrompt}
+    generateInsight={engine.generateInsight}
+    insights={engine.insights}
+    />
+</div>
 
-	  </div>
+<div className="col-span-12 lg:col-span-4">
+    <Card title="Active Signal">
+
+        <div className="flex flex-col items-center justify-center h-full py-10">
+
+            <div className="h-8 w-8 rounded-full bg-green-500 animate-pulse mb-4"></div>
+
+            <h2 className="text-3xl font-bold text-green-400">
+                {engine.activeGreenLane}
+            </h2>
+
+            <p className="mt-2 text-slate-400">
+                Current Green Lane
+            </p>
+
+        </div>
+
+    </Card>
+</div>
 
 	  <div className="col-span-12">
 	  <Card title="Traffic Statistics">
@@ -243,7 +98,9 @@ engine.setIsPlaying(!engine.isPlaying)
 	   </Card>
 	   </div>
 
-          <Card title="System Health">
+          <div className="col-span-4 lg:col-span-12">
+
+	  <Card title="System Health">
 
 <div className="space-y-4">
 
@@ -287,7 +144,9 @@ Mode
 
 </Card>
 
-	  <div className="col-span-12">
+</div>
+
+	  <div className="col-span-8">
           <Card
     title="Intersection Simulator"
     headerAction={
@@ -362,7 +221,9 @@ Mode
 </Card>
 </div>
 
-          <Card title="Live Density">
+          <div className="col-span-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+	  <Card title="Live Density">
 
 	    <div className="flex items-center justify-between">
 
@@ -390,11 +251,11 @@ Mode
 
         <div className="flex justify-between mb-1">
 
-          <span className="font-semibold">
+          <span className="font-semibold text-slate-200">
             {lane}
           </span>
 
-          <span className="text-cyan-400">
+          <span className="font-semibold text-cyan-300">
             {value} Vehicles
           </span>
 
@@ -439,7 +300,7 @@ Mode
             📋
         </div>
 
-        <h3 className="mt-3 font-semibold text-white">
+        <h3 className="mt-3 text-lg font-bold text-slate-100">
             Activity Timeline
         </h3>
 
@@ -451,7 +312,10 @@ Mode
 ) : (
               <ul>
                 {engine.logs.map((log) => (
-                  <li key={log.id}>
+                  <li key={log.id}
+		  className="text-slate-200 py-2 border-b border-slate-700"
+		  >
+
                     {log.time} - {log.message}
                   </li>
                 ))}
@@ -467,7 +331,7 @@ Mode
               Save
             </PrimaryButton>
 
-	    <p>
+	    <p className="text-slate-300 mt-3">
               Save metrics after adding vehicles.
             </p>
 
@@ -478,7 +342,7 @@ Mode
             💾
         </div>
 
-        <h3 className="mt-3 font-semibold text-white">
+        <h3 className="mt-3 text-lg font-bold text-slate-100">
             No Snapshots
         </h3>
 
@@ -503,6 +367,7 @@ Mode
               </ul>
             )}
           </Card>
+	  </div>
         </section>
       </main>
       <footer>

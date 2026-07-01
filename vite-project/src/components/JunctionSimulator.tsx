@@ -8,22 +8,22 @@ interface JunctionSimulatorProps {
 
 const lightPosition: Record<LaneDirection, CSSProperties> = {
   North: {
-    top: 20,
+    top: 35,
     left: "50%",
     transform: "translateX(-50%)",
   },
   South: {
-    bottom: 20,
+    bottom: 35,
     left: "50%",
     transform: "translateX(-50%)",
   },
   East: {
-    right: 20,
+    right: 35,
     top: "50%",
     transform: "translateY(-50%)",
   },
   West: {
-    left: 20,
+    left: 35,
     top: "50%",
     transform: "translateY(-50%)",
   },
@@ -37,13 +37,13 @@ export function JunctionSimulator({
     vehicles.filter((vehicle) => vehicle.lane === lane).length;
 
   return (
-    <div className="relative h-[430px] w-full overflow-hidden rounded-2xl bg-[#11151C]">
+    <div className="relative min-h-[500px] w-full overflow-hidden rounded-2xl bg-[#11151C]">
 
       {/* Vertical Road */}
-      <div className="absolute left-1/2 top-0 h-full w-28 -translate-x-1/2 bg-[#2B313C]" />
+      <div className="absolute left-1/2 top-0 h-full w-32 -translate-x-1/2 bg-[#343B48]" />
 
       {/* Horizontal Road */}
-      <div className="absolute left-0 top-1/2 h-28 w-full -translate-y-1/2 bg-[#2B313C]" />
+      <div className="absolute left-0 top-1/2 h-32 w-full -translate-y-1/2 bg-[#343B48]" />
 
       {/* Vertical Lane Divider */}
 <div className="absolute left-1/2 top-0 h-full w-1 -translate-x-1/2">
@@ -56,64 +56,79 @@ export function JunctionSimulator({
 </div>
 
       {/* Junction */}
-      <div className="absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-1/2 rounded-lg border border-cyan-500/30 bg-gradient-to-br from-slate-700 to-slate-800" />
+      <div
+  className="
+  absolute
+  z-10
+  left-1/2
+  top-1/2
+  h-32
+  w-32
+  -translate-x-1/2
+  -translate-y-1/2
+  rounded-xl
+  border
+  border-cyan-500/30
+  bg-[#3A4252]
+  "
+/>
 
       {/* Road Labels */}
-      <div className="absolute top-2 left-1/2 -translate-x-1/2 text-sm font-bold text-white">
+      <div className="absolute top-6 left-1/2 -translate-x-1/2 text-sm font-bold text-white">
         NORTH
       </div>
 
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-sm font-bold text-white">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-sm font-bold text-white">
         SOUTH
       </div>
 
-      <div className="absolute left-2 top-1/2 -translate-y-1/2 text-sm font-bold text-white">
+      <div className="absolute left-6 top-1/2 -translate-y-1/2 text-sm font-bold text-white">
         WEST
       </div>
 
-      <div className="absolute right-2 top-1/2 -translate-y-1/2 text-sm font-bold text-white">
+      <div className="absolute right-6 top-1/2 -translate-y-1/2 text-sm font-bold text-white">
         EAST
       </div>
 
       {/* Zebra Crossings */}
 
-<div className="absolute left-1/2 top-[105px] -translate-x-1/2 flex gap-1">
+<div className="absolute left-1/2 top-[130px] -translate-x-1/2 flex gap-1">
   {[...Array(6)].map((_, i) => (
     <div key={i} className="h-10 w-2 bg-white/80 rounded-sm" />
   ))}
 </div>
 
-<div className="absolute left-1/2 bottom-[105px] -translate-x-1/2 flex gap-1">
+<div className="absolute left-1/2 bottom-[130px] -translate-x-1/2 flex gap-1">
   {[...Array(6)].map((_, i) => (
     <div key={i} className="h-10 w-2 bg-white/80 rounded-sm" />
   ))}
 </div>
 
-<div className="absolute top-1/2 left-[105px] -translate-y-1/2 flex flex-col gap-1">
+<div className="absolute top-1/2 left-[130px] -translate-y-1/2 flex flex-col gap-1">
   {[...Array(6)].map((_, i) => (
     <div key={i} className="w-10 h-2 bg-white/80 rounded-sm" />
   ))}
 </div>
 
-<div className="absolute top-1/2 right-[105px] -translate-y-1/2 flex flex-col gap-1">
+<div className="absolute top-1/2 right-[130px] -translate-y-1/2 flex flex-col gap-1">
   {[...Array(6)].map((_, i) => (
     <div key={i} className="w-10 h-2 bg-white/80 rounded-sm" />
   ))}
 </div>
 
-      <div className="absolute top-20 left-1/2 -translate-x-1/2 text-3xl text-white/60">
+      <div className="absolute top-32 left-1/2 -translate-x-1/2 text-3xl text-white/60">
   ↓
 </div>
 
-<div className="absolute bottom-20 left-1/2 -translate-x-1/2 text-3xl text-white/60">
+<div className="absolute bottom-32 left-1/2 -translate-x-1/2 text-3xl text-white/60">
   ↑
 </div>
 
-<div className="absolute left-20 top-1/2 -translate-y-1/2 text-3xl text-white/60">
+<div className="absolute left-32 top-1/2 -translate-y-1/2 text-3xl text-white/60">
   →
 </div>
 
-<div className="absolute right-20 top-1/2 -translate-y-1/2 text-3xl text-white/60">
+<div className="absolute right-32 top-1/2 -translate-y-1/2 text-3xl text-white/60">
   ←
 </div>
 
@@ -143,59 +158,73 @@ export function JunctionSimulator({
         let style: CSSProperties = {};
 
         switch (vehicle.lane) {
-          case "North":
-            style = {
-              left: "50%",
-              top: 60 + index * 22,
-              transform: "translateX(-50%)",
-            };
-            break;
+  case "North":
+    style = {
+      left: "50%",
+      top: 170 + index * 55,
+      transform: "translateX(-50%) rotate(90deg)",
+    };
+    break;
 
-          case "South":
-            style = {
-              left: "50%",
-              bottom: 60 + index * 22,
-              transform: "translateX(-50%)",
-            };
-            break;
+  case "South":
+    style = {
+      left: "50%",
+      bottom: 170 + index * 55,
+      transform: "translateX(-50%) rotate(-90deg)",
+    };
+    break;
 
-          case "East":
-            style = {
-              right: 60 + index * 22,
-              top: "50%",
-              transform: "translateY(-50%)",
-            };
-            break;
+  case "East":
+    style = {
+      right: 170 + index * 55,
+      top: "50%",
+      transform: "translateY(-50%) rotate(180deg)",
+    };
+    break;
 
-          case "West":
-            style = {
-              left: 60 + index * 22,
-              top: "50%",
-              transform: "translateY(-50%)",
-            };
-            break;
-        }
+  case "West":
+    style = {
+      left: 170 + index * 55,
+      top: "50%",
+      transform: "translateY(-50%)",
+    };
+    break;
+}
 
         return (
-          <div
-            key={vehicle.id}
-            style={style}
-            className="
-absolute
-h-5
-w-10
-rounded-lg
-border
-border-cyan-200
-bg-gradient-to-r
-from-cyan-300
-to-cyan-500
-shadow-[0_0_15px_rgba(34,211,238,0.8)]
-transition-all
-duration-500
-"
-          />
-        );
+  <div
+    key={vehicle.id}
+    style={style} 
+    className={`absolute z-50 transition-all duration-500`}
+  >
+    <div className="relative">
+
+      {/* Wheels */}
+      <div className="absolute -left-1 top-1 h-2 w-1 rounded-full bg-gray-900"></div>
+      <div className="absolute -left-1 bottom-1 h-2 w-1 rounded-full bg-gray-900"></div>
+
+      <div className="absolute -right-1 top-1 h-2 w-1 rounded-full bg-gray-900"></div>
+      <div className="absolute -right-1 bottom-1 h-2 w-1 rounded-full bg-gray-900"></div>
+
+      {/* Car Body */}
+      <div className="h-7 w-14 rounded-lg bg-gradient-to-r from-cyan-400 to-cyan-600 shadow-[0_0_15px_rgba(34,211,238,0.9)] border border-cyan-200">
+
+        {/* Windshield */}
+        <div className="absolute left-3 top-1 h-5 w-8 rounded bg-cyan-100/50"></div>
+
+        {/* Headlights */}
+        <div className="absolute -right-0.5 top-2 h-1 w-1 rounded-full bg-yellow-300"></div>
+        <div className="absolute -right-0.5 bottom-2 h-1 w-1 rounded-full bg-yellow-300"></div>
+
+        {/* Tail Lights */}
+        <div className="absolute -left-0.5 top-2 h-1 w-1 rounded-full bg-red-500"></div>
+        <div className="absolute -left-0.5 bottom-2 h-1 w-1 rounded-full bg-red-500"></div>
+
+      </div>
+
+    </div>
+  </div>
+);
       })}
 
       {/* Footer */}
