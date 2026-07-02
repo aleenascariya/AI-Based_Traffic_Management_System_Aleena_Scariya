@@ -198,37 +198,7 @@ Traffic Statistics & Reports
 
 ---
 
-# 📸 Screenshots
 
-## Dashboard
-
-> *(Add your dashboard screenshot here)*
-
-```
-screenshots/dashboard.png
-```
-
----
-
-## Junction Simulator
-
-> *(Add simulator screenshot here)*
-
-```
-screenshots/simulator.png
-```
-
----
-
-## AI Dashboard
-
-> *(Add AI module screenshot here)*
-
-```
-screenshots/ai-module.png
-```
-
----
 
 # 🎯 Future Enhancements
 
